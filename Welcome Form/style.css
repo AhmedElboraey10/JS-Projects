@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 5vw auto;
+    width: 30vw;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 2vw;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+form input {
+    height: 2vw;
+    padding: 1.5vw 1vw;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid lightgray;
+    transition: all 0.4s ease;
+}
+
+form input:focus {
+    outline: none;
+    border-color:blue;
+    box-shadow: 0px 0px 15px 0px blue;
+}
+
+form button {
+    height: 3vw;
+    color: white;
+    background-color: blue;
+    border: none;
+    font-size: 18px;
+    font-weight: bolder;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 15px 0px blue;
+}
