@@ -7,3 +7,4 @@ A collection of interactive web applications and frontend JavaScript projects bu
 - **[Calculator](./Calculator/)**: A responsive arithmetic calculator supporting basic operations (+, -, *, /), input validation, and dynamic equation formatting.
 - **[Welcome Form](./Welcome%20Form/)**: An interactive form component capturing user inputs (Name, Age, Hobby), validating data, and dynamically rendering personalized welcome cards to the DOM.
 - **[Weekday Planner](./Weekday%20Planner/)**: A responsive Arabic weekday planner that evaluates user input and dynamically renders custom day-specific messages using switch statements.
+- **[To Do List](./To%20Do%20List/)**: A responsive task management app allowing users to add, delete, and toggle between alphabetical and original sorting of tasks using ES6+ array methods.
