@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Library System</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>مكتبتنا</h1>
+        <div class="LibrarySections"></div>
+        <h3>اجمالي عدد الصفحات في المكتبه: <span id="page-num"></span></h3>
+        <div class="add-book-container">
+            <h1>إضافة كتاب أو قسم جديد</h1>
+            <form id="add-book-form">
+                <input type="text" id="section-name" placeholder="اسم القسم (موجود أو جديد)" required>
+                <input type="text" id="book-title" placeholder="عنوان الكتاب" required>
+                <input type="text" id="book-author" placeholder="اسم المؤلف" required>
+                <input type="number" id="book-pages" placeholder="عدد الصفحات" min="1" required>
+                <button type="submit">إضافة للمكتبة</button>
+            </form>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

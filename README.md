@@ -10,3 +10,4 @@ A collection of interactive web applications and frontend JavaScript projects bu
 - **[To Do List](./To%20Do%20List/)**: A responsive task management app allowing users to add, delete, and toggle between alphabetical and original sorting of tasks using ES6+ array methods.
 - **[Product Display](./Product%20Display/)**: A dynamic e-commerce catalog featuring advanced array filtering that allows users to search products by starting letter or maximum price.
 - **[Product Pricing](./Product%20Pricing/)**: A batch tax calculator utility that parses a string of prices and uses array mapping to compute and display post-tax prices dynamically.
+- **[Library System](./Library%20System/)**: A comprehensive library management app featuring complex state management, an accordion UI, nested array reductions, and dynamic form submissions.
