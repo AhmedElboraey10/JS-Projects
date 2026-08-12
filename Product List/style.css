@@ -33,6 +33,7 @@ h1 {
 input {
     width: 100%;
     height: 2vw;
+    min-height: 45px;
     padding: 1.5vw 1vw;
     font-size: 18px;
     border-radius: 15px;
@@ -61,7 +62,8 @@ input:focus {
     cursor: pointer;
 }
 
-button:hover {
+.add:hover,
+.approveEdit:hover {
     transform: translateY(-3px);
     box-shadow: 0px 0px 15px 0px blue;
 }
@@ -82,7 +84,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     transition: all 0.4s ease;
-    background-color: #fafafa;;
+    background-color: #fafafa;
 }
 
 .productData {

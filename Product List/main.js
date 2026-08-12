@@ -117,6 +117,7 @@ function clearInput(input) {
     if (input.trim().length > 0) {
         return input;
     }
+    return null;
 }
 
 function resetInput() {
@@ -131,6 +132,10 @@ addButton.addEventListener('click', _ => {
         price: clearInput(productPrice.value),
         description: clearInput(productDescription.value)
     };
+    if (!product.name || !product.price || !product.description) {
+        alert('برجاء إدخال جميع بيانات المنتج!');
+        return;
+    }
     const idx = products.findIndex(ele => {
         return (
             ele.name === product.name &&
@@ -149,6 +154,7 @@ addButton.addEventListener('click', _ => {
 
 productList.addEventListener('click', e => {
     const product = e.target.closest('.product');
+    if (!product) return;
     const name = product.querySelector('.name').textContent;
     const price = product.querySelector('.price span').textContent;
     const description = product.querySelector('.description').textContent;
@@ -166,6 +172,7 @@ productList.addEventListener('click', e => {
         product.remove();
     }
     if (e.target.classList.contains('edit')) {
+        e.preventDefault();
         addButton.style.display = 'none';
         approveEdit.style.display = 'block';
         elementToEdit = product;
@@ -176,6 +183,7 @@ productList.addEventListener('click', e => {
 });
 
 function editElement(element) {
+    if (!element) return;
     const oldName = element.querySelector('.name').textContent;
     const oldPrice = element.querySelector('.price span').textContent;
     const oldDescription = element.querySelector('.description').textContent;

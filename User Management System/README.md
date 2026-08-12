@@ -8,6 +8,7 @@ Build a user management system initialized with an array of users. The interface
 ## Application Preview
 
 ![Application Preview](./images/image.png)
+![Application Preview - Edit State](./images/image%20copy.png)
 
 ## Technical Implementation
 1. **Tabular DOM Generation:** Generates and appends HTML `<tr>` and `<td>` elements to a table body (`tbody`) using a template literal structure to display user names, ages, and emails dynamically.
