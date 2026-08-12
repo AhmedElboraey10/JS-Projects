@@ -12,3 +12,4 @@ A collection of interactive web applications and frontend JavaScript projects bu
 - **[Product Pricing](./Product%20Pricing/)**: A batch tax calculator utility that parses a string of prices and uses array mapping to compute and display post-tax prices dynamically.
 - **[Library System](./Library%20System/)**: A comprehensive library management app featuring complex state management, an accordion UI, nested array reductions, and dynamic form submissions.
 - **[Product List](./Product%20List/)**: A responsive CRUD inventory manager that supports adding, updating, and deleting products with robust validation logic.
+- **[User Management System](./User%20Management%20System/)**: A tabular admin interface featuring user registry CRUD operations, duplicate checks, and smooth-scroll input autofocus.

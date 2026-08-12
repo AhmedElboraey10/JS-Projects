@@ -1,0 +1,165 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 50vw;
+    margin: 2vw auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.inputs {
+    width: 100%;
+    gap: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    height: 2vw;
+    min-height: 45px;
+    padding: 1.5vw 1vw;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 2px solid lightgray;
+    transition: all 0.4s ease;
+    background-color: #f4f4f4;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0px 0px 10px 0px rgba(13, 110, 253, 0.4);
+    background-color: white;
+}
+
+.add,
+.approveEdit {
+    padding: 10px 20px;
+    color: white;
+    background-color: #0d6efd;
+    border: none;
+    font-size: 24px;
+    font-weight: bolder;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.add:hover,
+.approveEdit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px 0px rgba(13, 110, 253, 0.4);
+}
+
+.userList {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1vw;
+    text-align: center;
+}
+
+.userList th,
+.userList td {
+    white-space: nowrap;
+}
+
+.userList thead th {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #0d6efd;
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.userList thead th:first-child {
+    border-radius: 0 15px 15px 0;
+}
+
+.userList thead th:last-child {
+    border-radius: 15px 0 0 15px;
+}
+
+.user {
+    background-color: #fafafa;
+    transition: all 0.4s ease;
+}
+
+.user td {
+    padding: 15px;
+    border-top: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    vertical-align: middle;
+    transition: inherit;
+}
+
+.user td:first-child {
+    border-right: 2px solid lightgray;
+    border-radius: 0 15px 15px 0;
+}
+
+.user td:last-child {
+    border-left: 2px solid lightgray;
+    border-radius: 15px 0 0 15px;
+}
+
+.user:hover {
+    box-shadow: 0px 0px 10px 0px rgba(13, 110, 253, 0.3);
+    background-color: white;
+}
+
+.user:hover td {
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+.Buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.Buttons .delete,
+.Buttons .edit {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    background-color: gray;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.user:hover .delete,
+.user:hover .edit {
+    background-color: #0d6efd;
+}
+
+.Buttons .delete:hover,
+.Buttons .edit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 10px 0px rgba(13, 110, 253, 0.5);
+}
