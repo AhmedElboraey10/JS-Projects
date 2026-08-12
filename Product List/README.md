@@ -7,7 +7,8 @@ Build a product management list initialized with an array of products. The inter
 
 ## Application Preview
 
-![Application Preview](./images/image.png)
+![Application Preview - Add & List](./images/image.png)
+![Application Preview - Edit State](./images/image%20copy.png)
 
 ## Technical Implementation
 1. **Dynamic CRUD Operations:** Implements complete Create, Read, Update, and Delete capabilities on a local state array (`products`) and mirrors all changes seamlessly in the DOM.
