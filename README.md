@@ -11,3 +11,4 @@ A collection of interactive web applications and frontend JavaScript projects bu
 - **[Product Display](./Product%20Display/)**: A dynamic e-commerce catalog featuring advanced array filtering that allows users to search products by starting letter or maximum price.
 - **[Product Pricing](./Product%20Pricing/)**: A batch tax calculator utility that parses a string of prices and uses array mapping to compute and display post-tax prices dynamically.
 - **[Library System](./Library%20System/)**: A comprehensive library management app featuring complex state management, an accordion UI, nested array reductions, and dynamic form submissions.
+- **[Product List](./Product%20List/)**: A responsive CRUD inventory manager that supports adding, updating, and deleting products with robust validation logic.
