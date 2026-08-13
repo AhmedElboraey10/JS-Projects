@@ -12,7 +12,7 @@ Build a product management list initialized with an array of products. The inter
 
 ## Technical Implementation
 1. **Dynamic CRUD Operations:** Implements complete Create, Read, Update, and Delete capabilities on a local state array (`products`) and mirrors all changes seamlessly in the DOM.
-2. **State-Driven Editing UI:** Uses a temporary pointer variable (`elementToEdit`) to track which item is being modified. Populates the input form and toggles button visibility (hiding Add and showing Approve Edit). Uses an `<a href="#title">` anchor link with `e.preventDefault()` to smoothly scroll the user back to the form without a page jump.
+2. **State-Driven Editing UI:** Uses a temporary pointer variable (`elementToEdit`) to track which item is being modified. Populates the input form and toggles button visibility (hiding Add and showing Approve Edit). Uses an `<a href="#title">` anchor link to smoothly scroll the user back to the form without a page jump.
 3. **Array Mutation & Matching:** Leverages ES6 methods like `.findIndex()` to locate products in memory by matching name, price, and description, and uses `.splice()` for secure deletion.
 4. **Duplicate Prevention & Validation:** Validates form values using a custom `clearInput()` helper and performs duplicate check scans during both Add and Edit phases, preventing identical items from cluttering the list.
 
