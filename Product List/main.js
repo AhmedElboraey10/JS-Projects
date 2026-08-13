@@ -172,7 +172,6 @@ productList.addEventListener('click', e => {
         product.remove();
     }
     if (e.target.classList.contains('edit')) {
-        e.preventDefault();
         addButton.style.display = 'none';
         approveEdit.style.display = 'block';
         elementToEdit = product;
