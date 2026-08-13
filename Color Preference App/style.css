@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 5vw auto;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    gap: 5vw;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 2vw;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+button {
+    height: 3vw;
+    color: white;
+    background-color: blue;
+    border: none;
+    font-size: 22px;
+    font-weight: bolder;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 15px 0px blue;
+}
+
+p {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 2vw;
+}
+
+.controllers {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.controllers button {
+    padding: 10px 15px;
+}
+
+.colors {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}
