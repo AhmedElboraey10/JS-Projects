@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Clock And URL Manager</title>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <h1>ادخل رابط ال URL الخاص بك</h1>
+            <input id="link" type="url" placeholder="رابط ال URL" required>
+            <button id="goToLink">الذهاب للرابط</button>
+        </form>
+        <div class="clock">
+            <h1>الساعة التفاعلية</h1>
+            <p class="time"></p>
+            <div class="controllers">
+                <button id="stop">اوقف الساعة</button>
+                <button id="start">ابدا الساعة</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>
