@@ -15,3 +15,4 @@ A collection of interactive web applications and frontend JavaScript projects bu
 - **[User Management System](./User%20Management%20System/)**: A tabular admin interface featuring user registry CRUD operations, duplicate checks, and smooth-scroll input autofocus.
 - **[Dynamic Clock & URL Manager](./Dynamic%20Clock%20and%20URL%20Manager/)**: A dual-utility app combining a live start/stop digital clock with a URL navigation tool featuring input validation.
 - **[Color Preference App](./Color%20Preference%20App/)**: A persistent background color picker that saves and restores the user's color choice across sessions using the localStorage API.
+- **[User Profile Viewer](./User%20Profile%20Viewer/)**: A focused profile dashboard featuring targeted DOM updates and state synchronization for editing a user's job title.
