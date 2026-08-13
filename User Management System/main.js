@@ -175,14 +175,12 @@ tbody.addEventListener('click', e => {
         tr.remove();
     }
     if (e.target.classList.contains('edit')) {
-        e.preventDefault();
         addButton.style.display = 'none';
         approveEdit.style.display = 'block';
         userToEdit = tr;
         userName.value = name;
         userAge.value = age;
         userEmail.value = email;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 });
 

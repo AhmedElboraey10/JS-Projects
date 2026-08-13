@@ -12,7 +12,7 @@ Build a user management system initialized with an array of users. The interface
 
 ## Technical Implementation
 1. **Tabular DOM Generation:** Generates and appends HTML `<tr>` and `<td>` elements to a table body (`tbody`) using a template literal structure to display user names, ages, and emails dynamically.
-2. **State-Driven Editing with Smooth Scroll:** Tracks the active row using a `userToEdit` pointer. Toggles the add/edit buttons, pre-fills the input values, and triggers a native `window.scrollTo` with smooth behavior to focus the user's attention back to the form.
+2. **State-Driven Editing UI:** Tracks the active row using a `userToEdit` pointer. Toggles the add/edit buttons and pre-fills the input fields with the selected user's current details when editing is initiated.
 3. **Data Cleansing & Validation:** Employs a custom `clearInput()` helper that sanitizes inputs by removing outer whitespace. Validates that all fields are fully filled before processing any submissions.
 4. **Duplicate Safeguards:** Utilizes `.findIndex()` to prevent duplicate entries with identical names, ages, and emails during both the creation of new users and the modification of existing entries.
 
