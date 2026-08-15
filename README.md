@@ -16,3 +16,4 @@ A collection of interactive web applications and frontend JavaScript projects bu
 - **[Dynamic Clock & URL Manager](./Dynamic%20Clock%20and%20URL%20Manager/)**: A dual-utility app combining a live start/stop digital clock with a URL navigation tool featuring input validation.
 - **[Color Preference App](./Color%20Preference%20App/)**: A persistent background color picker that saves and restores the user's color choice across sessions using the localStorage API.
 - **[User Profile Viewer](./User%20Profile%20Viewer/)**: A focused profile dashboard featuring targeted DOM updates and state synchronization for editing a user's job title.
+- **[Product Tracker](./Product%20Tracker/)**: A product tracking dashboard using JavaScript Sets and Maps for state management, featuring optimized DOM rendering and dynamic total cost calculation.
