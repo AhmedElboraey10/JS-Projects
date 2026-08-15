@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Form Validation</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="title">اضف مستخدم جديد</h1>
+        <form class="inputs">
+            <input type="text" id="name" placeholder="اسم المستخدم">
+            <input type="email" id="email" placeholder="البريد الالكتروني">
+            <input type="tel" id="phone" placeholder="رقم الهاتف">
+            <button id="add" class="add">اضافه +</button>
+        </form>
+        
+        <h1>قائمة المستخدمين</h1>
+        
+        <table class="userList" id="userList">
+            <thead>
+                <tr>
+                    <th>اسم المستخدم</th>
+                    <th>البريد الالكتروني</th>
+                    <th>رقم الهاتف</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
