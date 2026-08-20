@@ -21,3 +21,4 @@ A collection of interactive web applications and frontend JavaScript projects bu
 - **[Login Form Validation](./Login%20Form%20Validation/)**: A login interface employing strict RegEx validation with conditional form submission and inline, non-intrusive error messaging.
 - **[User Constructor](./User%20Constructor/)**: An object-oriented application utilizing ES6 classes, instantiation, and state array mapping to dynamically generate and edit user greeting cards.
 - **[Library Management](./Library%20Management/)**: An object-oriented catalog application demonstrating ES6 class inheritance, polymorphism, and array reduction to display and calculate metrics for a large collection of books.
+- **[Event Countdown Timer](./Event%20Countdown%20Timer/)**: A dynamic event tracker that computes future dates, manages asynchronous intervals cleanly, and performs complex mathematical time conversions.

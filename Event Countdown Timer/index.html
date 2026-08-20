@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Event Countdown</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="title">اضف حدث</h1>
+        <form class="inputs">
+            <input type="text" id="name" placeholder="اسم الحدث">
+            <h2>مده العد التنازلي</h2>
+            <input type="number" id="days" placeholder="عدد الايام" required>
+            <input type="number" id="hours" placeholder="عدد الساعات" required>
+            <input type="number" id="minutes" placeholder="عدد الدقائق" required>
+            <input type="number" id="seconds" placeholder="عدد الثواني" required>
+        </form>
+        
+        <h1>انقر على الزر لبدء العد التنازلي</h1>
+        <button id="start" class="add">ابدا العد التنازلي</button>
+        
+        <div class="timer">
+            <h1 id="eventName"></h1>
+            <p class="time"></p>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
