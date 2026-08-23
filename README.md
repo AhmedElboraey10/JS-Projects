@@ -23,3 +23,4 @@ A collection of interactive web applications and frontend JavaScript projects bu
 - **[Library Management](./Library%20Management/)**: An object-oriented catalog application demonstrating ES6 class inheritance, polymorphism, and array reduction to display and calculate metrics for a large collection of books.
 - **[Event Countdown Timer](./Event%20Countdown%20Timer/)**: A dynamic event tracker that computes future dates, manages asynchronous intervals cleanly, and performs complex mathematical time conversions.
 - **[Random Number Generator](./Random%20Number%20Generator/)**: A simple utility designed to demonstrate ES6 Generator functions (`function*`), `yield` syntax, and array state history tracking.
+- **[User Information Fetcher](./User%20Information%20Fetcher/)**: An asynchronous, API-driven dashboard that fetches remote data, implements rigorous error handling, and provides client-side array filtering for instant search.
