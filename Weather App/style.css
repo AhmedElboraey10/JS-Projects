@@ -1,0 +1,135 @@
+.styled-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #fdd448 rgba(255, 255, 255, 0.12);
+}
+
+.styled-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #fdd448;
+    border-radius: 999px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #e0bb2f;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+nav.open-menu {
+    position: fixed;
+    top: 4rem;
+    bottom: 0;
+    right: 1.25rem;
+    opacity: 1;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(calc(100% + 2rem));
+    transition: transform 0.45s ease-out, visibility 0.45s;
+    overflow-y: auto;
+}
+
+nav.open-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+.open-lang-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 639px) {
+
+    .open-lang-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+    }
+
+}
+
+.active-li {
+    color: black;
+    background-color: #fdd448;
+}
+
+#search-city:focus-within #city-results {
+    max-height: 210px;
+}
+
+#city-results ul {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(253, 212, 72, 0.7) transparent;
+}
+
+#city-results ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+#city-results ul::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#city-results ul::-webkit-scrollbar-thumb {
+    background: rgba(253, 212, 72, 0.7);
+    border-radius: 3px;
+}
+
+#weekly-forecast-body .state {
+    max-width: 6rem;
+}
+
+.weekly-forecast-section table,
+.hourly-forecast-widget {
+    scrollbar-color: #fdd448 transparent;
+}
+
+.weekly-forecast-section table::-webkit-scrollbar-track,
+.hourly-forecast-widget::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#weekly-forecast-body td {
+    min-width: 140px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#weekly-forecast-body {
+    --reserve: 0px;
+    --grow: 1;
+}
+
+#weekly-forecast-body:has(td:nth-child(8)) {
+    --reserve: 6rem;
+    --grow: 0;
+}
+
+@media (min-width: 640px) {
+    #weekly-forecast-body td {
+        min-width: calc((100% - var(--reserve)) / 7);
+        flex-grow: var(--grow);
+    }
+}
+
+#weekly-forecast-body td:last-child {
+    min-width: 0;
+    flex-grow: 0;
+}
+
+#weekly-forecast-body td:last-child .wrap {
+    max-width: none;
+}

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <title>Weather App</title>
+
+  <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+
+<body class="bg-[url('./assets/images/background.jpg')] bg-cover bg-no-repeat bg-center bg-fixed min-h-dvh md:h-dvh md:overflow-hidden font-sans flex flex-col">
+
+    <header class="shrink-0">
+
+        <div class="header-container relative mb-10 sm:mb-0 w-full max-w-[1440px] mx-auto flex flex-wrap gap-x-4 px-4 py-4 sm:px-6 md:px-8 bg-transparent justify-between items-center">
+
+            <div class="brand-location-group flex flex-1 gap-2 sm:gap-3 md:gap-4 lg:gap-6 justify-start items-center">
+
+                <span id="app-logo" class="app-logo text-[18px] font-bold uppercase text-black shrink-0 cursor-pointer">
+                    CLIMO
+                </span>
+
+                <div class="location-selector flex absolute top-full left-0 w-full justify-center sm:static sm:mt-0 sm:w-auto sm:justify-start gap-1.5 sm:gap-2 items-center text-[13px] text-black shrink-0 z-10">
+
+                    <i class="bi bi-geo-alt"></i>
+
+                    <div class="location-text flex flex-wrap justify-center text-center">
+
+                        weather in
+
+                        &nbsp;
+
+                        <span class="city-name font-bold" id="city-name">
+                        </span>
+
+                        &nbsp;
+
+                        /
+
+                        &nbsp;
+
+                        <span id="region-name">
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div id="search-city" class="relative flex w-full max-w-[400px] items-center bg-transparent border border-black/30 focus-within:border-black/60 rounded-full px-2.5 py-1.5 transition-all duration-300">
+
+                    <i class="ti ti-search text-black text-[14px] sm:text-[16px] shrink-0"></i>
+
+                    <input type="text" placeholder="Search city...." class="pl-1 sm:pl-2 outline-none bg-transparent text-black text-[12px] sm:text-[13px] w-full placeholder:text-black/60">
+
+                    <div id="city-results" class="flex items-end absolute top-full left-0 w-full max-h-0 overflow-hidden z-50 transition-[max-height] duration-300 ease-in-out">
+
+                        <div class="w-full overflow-hidden rounded-2xl border border-black/20 bg-white/20 backdrop-blur-[5px]">
+
+                            <ul class="list-none m-0 p-0 w-full max-h-[210px] overflow-y-auto">
+
+                                
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="header-menu-group flex gap-4 md:gap-5 lg:gap-6 items-center shrink-0">
+
+                <button id="temp-unit-toggle" class="temp-unit-toggle flex items-center shrink-0 text-[13px] text-black cursor-pointer">
+
+                    <span class="font-bold" id="celsius">
+                        &deg;C
+                    </span>
+
+                    <span class="text-black/50 font-normal mx-1.5">
+                        |
+                    </span>
+
+                    <span class="font-normal" id="fahrenheit">
+                        &deg;F
+                    </span>
+
+                </button>
+
+                <button id="menu-toggle" class="menu-toggle flex items-center text-[13px] font-semibold uppercase text-black cursor-pointer shrink-0">
+
+                    <span class="relative sm:hidden block w-[18px] h-[12px]">
+                        <span class="absolute top-0 left-0 w-full h-[2px] bg-black shadow-[0_5px_0_black,0_10px_0_black]"></span>
+                    </span>
+
+                    <span class="hidden sm:block">
+                        MENU
+                    </span>
+
+                </button>
+
+            </div>
+
+    </header>
+
+    <nav id="open-menu" class="open-menu flex flex-col backdrop-blur-[10px] bg-white/15 w-[92vw] max-sm:left-0 max-sm:right-0! max-sm:mx-auto sm:w-[60vw] md:w-[190px] md:bottom-auto! md:max-h-[calc(100dvh_-_4rem_-_5px)] lg:w-[25vw] xl:w-[15vw] rounded-xl rounded-b-none md:rounded-b-xl z-10">
+
+        <h2 class="font-bold mb-3 sm:mb-4 px-4 sm:px-8 md:max-lg:px-5 mt-5 sm:mt-6 w-fit max-sm:self-center">LOCATION FILTER</h2>
+
+        <div class="container px-4 sm:px-8 md:max-lg:px-5 pb-5 sm:pb-6 flex flex-col justify-between h-auto">
+
+            <div class="top flex flex-col gap-5 mb-4">
+
+                <label for="continent" class="font-bold">CONTINENT</label>
+
+                <ul id="continent" class="flex flex-col text-white">
+
+                    <li value="" class="duration-200 hover:shadow-[0px_0px_15px_0px_#fdd448] border-solid border-3 border-transparent cursor-pointer px-2.5 py-1.5 rounded-2xl hover:border-[#fdd448]">
+                        Africa
+                    </li>
+
+                    <li value="" class="duration-200 hover:shadow-[0px_0px_15px_0px_#fdd448] border-solid border-3 border-transparent cursor-pointer px-2.5 py-1.5 rounded-2xl hover:border-[#fdd448]">
+                        Asia
+                    </li>
+
+                    <li value="" class="duration-200 hover:shadow-[0px_0px_15px_0px_#fdd448] border-solid border-3 border-transparent cursor-pointer px-2.5 py-1.5 rounded-2xl hover:border-[#fdd448]">
+                        Europe
+                    </li>
+
+                    <li value="" class="duration-200 hover:shadow-[0px_0px_15px_0px_#fdd448] border-solid border-3 border-transparent cursor-pointer px-2.5 py-1.5 rounded-2xl hover:border-[#fdd448]">
+                        North America
+                    </li>
+
+                    <li value="" class="duration-200 hover:shadow-[0px_0px_15px_0px_#fdd448] border-solid border-3 border-transparent cursor-pointer px-2.5 py-1.5 rounded-2xl hover:border-[#fdd448]">
+                        South America
+                    </li>
+
+                    <li value="" class="duration-200 hover:shadow-[0px_0px_15px_0px_#fdd448] border-solid border-3 border-transparent cursor-pointer px-2.5 py-1.5 rounded-2xl hover:border-[#fdd448]">
+                        Oceania
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="bottom flex flex-col gap-3">
+
+                <label class="font-bold text-black">
+                    COUNTRY
+                </label>
+
+                <div class="countries overflow-hidden">
+
+                    <div id="search-country" class="search-country border-2 border-solid border-white rounded-t-xl px-2 py-1.5 flex flex-row flex-nowrap items-center">
+
+                        <i class="ti ti-search text-white cursor-pointer"></i>
+
+                        <input type="text" class="pl-1 outline-none text-white w-full">
+
+                    </div>
+
+                    <div id="results" class="results styled-scrollbar border-2 border-solid border-white rounded-b-2xl p-4 border-t-0 h-[150px] overflow-y-auto relative transition-all duration-300">
+
+                        <ul id="resultsList" class="flex flex-col gap-2 text-white">
+
+                            
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="flex-1 flex flex-col">
+
+        <div class="dashboard-container w-full max-w-[1440px] mx-auto mt-6 sm:mt-12 md:mt-0 md:mb-0 md:pb-6 flex-1 lg:mt-8 lg:flex-1 lg:justify-start xl:flex-1 xl:justify-start px-4 sm:px-10 lg:px-22 flex flex-col gap-8 sm:gap-10 md:gap-3 lg:gap-16 xl:gap-16">
+
+            <section class="current-weather-section flex flex-row md:flex-1 md:w-full">
+
+                <div class="current-weather-grid grid w-full items-center md:items-stretch gap-y-8 md:gap-y-3 lg:gap-y-16 xl:gap-y-0 gap-x-4 md:gap-x-8 xl:gap-x-12 grid-cols-2 md:grid-cols-3 lg:grid-cols-[auto_1fr_auto] xl:grid-cols-[auto_auto_auto_1fr] md:grid-rows-[auto_1fr] h-full justify-items-center lg:justify-items-stretch lg:items-end xl:grid-rows-[auto] xl:content-end">
+
+                    <div class="sun-cycle-widget flex flex-col justify-end text-center xl:text-left items-center xl:items-center col-start-2 row-start-2 justify-self-center md:col-start-1 md:row-start-1 lg:col-start-2 lg:row-start-2 lg:justify-self-center self-stretch md:self-end lg:self-center xl:self-stretch xl:relative xl:min-w-[90px] xl:col-start-1 xl:row-start-1 xl:justify-self-start">
+
+                        <img src="" alt="" id="current-weather-icon" class="w-[100px] sm:w-[90px] lg:w-[90px] mb-2 max-[320px]:mb-1 md:mb-3 xl:absolute xl:mb-0 xl:left-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2 xl:top-[calc(33.333%_+_10px)]">
+
+                        <p class="sunrise-text text-[13px] font-normal text-white/65">
+
+                            Sunrise
+
+                            <span class="font-normal" id="sunrise-time">
+
+                            </span>
+
+                        </p>
+
+                        <p class="sunset-text md:mt-1 text-[13px] font-normal text-white/65">
+
+                            Sunset
+
+                            <span class="font-normal" id="sunset-time">
+                            </span>
+
+                        </p>
+
+                    </div>
+
+                    <div class="main-temperature-widget md:h-full md:self-stretch md:justify-between flex flex-col gap-1 justify-end lg:justify-between lg:self-stretch text-center xl:text-left items-center xl:items-start col-span-2 col-start-1 row-start-1 justify-self-center md:col-span-1 md:col-start-2 md:row-start-1 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:justify-self-center xl:col-span-1 xl:col-start-2 xl:row-start-1 xl:justify-self-start">
+
+                        <p class="current-date text-[18px] font-bold text-white leading-none md:whitespace-nowrap lg:text-center xl:text-left" id="current-date-time">
+
+                        </p>
+
+                        <div class="temperature-degree text-[48px] sm:text-[60px] lg:text-[80px] font-bold text-[#fdd448] leading-none" id="main-temp">
+
+                            <span id="current-temp" class="font-bold">
+                                
+                            </span>
+                            
+                        </div>
+
+                        <p class="feels-like-text text-[18px] font-normal text-white">
+
+                            Feels like
+
+                            <span id="feels-like-temp">
+                            </span>
+
+                        </p>
+
+                        <p class="weather-condition-note text-[13px] font-normal text-white/70 leading-normal" id="weather-description">
+
+                        </p>
+
+                    </div>
+
+                    <div class="extra-metrics-widget md:h-full md:self-stretch flex flex-col justify-between gap-4 sm:gap-6 lg:gap-9 text-center lg:text-left items-center lg:items-start col-start-1 row-start-2 justify-self-center md:col-start-3 md:row-start-1 lg:col-start-1 lg:row-start-2 lg:justify-self-start xl:col-start-3 xl:row-start-1 lg:self-stretch">
+
+                        <h4 class="metrics-title text-[13px] font-semibold uppercase text-white leading-none">
+
+                            MORE DETAILS:
+
+                        </h4>
+
+                        <ul class="text-[13px] flex flex-col gap-2.5 lg:gap-6 xl:flex-1 xl:justify-between items-center lg:items-start">
+
+                            <li class="metric-wind-speed text-white/75">
+
+                                Wind speed:
+
+                                <span class="font-bold text-white" id="wind-speed">
+
+                                </span>
+
+                            </li>
+
+                            <li class="metric-humidity text-white/75">
+
+                                Air humidity:
+
+                                <span class="font-bold text-white" id="humidity">
+
+                                </span>
+
+                            </li>
+
+                            <li class="metric-pressure text-white/75">
+
+                                Pressure:
+
+                                <span class="font-bold text-white" id="pressure">
+
+                                </span>
+
+                            </li>
+
+                            <li class="metric-precipitation text-white/75">
+
+                                Precipitation probability:
+
+                                <span class="font-bold text-white" id="precipitation-prob">
+                                </span>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="hourly-forecast-widget styled-scrollbar backdrop-blur-[3px] p-4 sm:p-6 lg:p-9 bg-black/7 overflow-x-auto w-full md:w-fit col-span-2 row-start-3 justify-self-center md:col-span-3 md:row-start-2 lg:col-span-1 lg:col-start-3 lg:row-start-2 lg:justify-self-end xl:col-start-4 xl:row-start-1 xl:justify-self-end flex flex-col justify-center lg:self-stretch md:self-center">
+
+                        <table class="w-max lg:w-auto">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th class="text-[10px] font-normal uppercase text-white/55">NIGHT</th>
+
+                                    <th class="text-[10px] font-normal uppercase text-white/55">MORNING</th>
+
+                                    <th class="text-[10px] font-normal uppercase text-white/55">DAY</th>
+
+                                    <th class="text-[10px] font-normal uppercase text-white/55">EVENING</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="hourly-forecast-body">
+
+                                <tr>
+
+                                    <td class="px-2 pt-4 pb-0">
+
+                                        <div class="wraper flex flex-row gap-1">
+
+                                            <div class="flex flex-col gap-2 px-[5px]">
+
+                                                <i class="flex justify-center">
+
+                                                    <img src="" alt="" class="w-[30px]">
+
+                                                </i>
+
+                                                <span class="deg text-[16px] font-normal text-white">
+                                                </span>
+
+                                                <span class="time text-[10px] font-normal text-white/50 text-center">
+                                                </span>
+
+                                            </div>
+
+                                            <div class="flex flex-col gap-2 px-[5px]">
+
+                                                <i class="flex justify-center">
+
+                                                    <img src="" alt="" class="w-[30px]">
+
+                                                </i>
+
+                                                <span class="deg text-[16px] font-normal text-white">
+                                                </span>
+
+                                                <span class="time text-[10px] font-normal text-white/50 text-center">
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="px-2 pt-4 pb-0">
+
+                                        <div class="wraper flex flex-row gap-1">
+
+                                            <div class="flex flex-col gap-2 px-[5px]">
+
+                                                <i class="flex justify-center">
+
+                                                    <img src="" alt="" class="w-[30px]">
+
+                                                </i>
+
+                                                <span class="deg text-[16px] font-normal text-white">
+                                                </span>
+
+                                                <span class="time text-[10px] font-normal text-white/50 text-center">
+                                                </span>
+
+                                            </div>
+
+                                            <div class="flex flex-col gap-2 px-[5px]">
+
+                                                <i class="flex justify-center">
+
+                                                    <img src="" alt="" class="w-[30px]">
+
+                                                </i>
+
+                                                <span class="deg text-[16px] font-normal text-white">
+                                                </span>
+
+                                                <span class="time text-[10px] font-normal text-white/50 text-center"></span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="px-2 pt-4 pb-0">
+
+                                        <div class="wraper flex flex-row gap-1">
+
+                                            <div class="flex flex-col gap-2 px-[5px]">
+
+                                                <i class="flex justify-center">
+
+                                                    <img src="" alt="" class="w-[30px]">
+
+                                                </i>
+
+                                                <span class="deg text-[16px] font-normal text-white">
+                                                </span>
+
+                                                <span class="time text-[10px] font-normal text-white/50 text-center">
+                                                </span>
+
+                                            </div>
+
+                                            <div class="flex flex-col gap-2 px-[5px]">
+
+                                                <i class="flex justify-center">
+
+                                                    <img src="" alt="" class="w-[30px]">
+
+                                                </i>
+
+                                                <span class="deg text-[16px] font-normal text-white">
+                                                </span>
+
+                                                <span class="time text-[10px] font-normal text-white/50 text-center">
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="px-2 pt-4 pb-0">
+
+                                        <div class="wraper flex flex-row gap-1">
+
+                                            <div class="flex flex-col gap-2 px-[5px]">
+
+                                                <i class="flex justify-center">
+
+                                                    <img src="" alt="" class="w-[30px]">
+
+                                                </i>
+
+                                                <span class="deg text-[16px] font-normal text-white">
+                                                </span>
+
+                                                <span class="time text-[10px] font-normal text-white/50 text-center">
+                                                </span>
+
+                                            </div>
+
+                                            <div class="flex flex-col gap-2 px-[5px]">
+
+                                                <i class="flex justify-center">
+
+                                                    <img src="" alt="" class="w-[30px]">
+
+                                                </i>
+
+                                                <span class="deg text-[16px] font-normal text-white ">
+                                                </span>
+
+                                                <span class="time text-[10px] font-normal text-white/50 text-center">
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="weekly-forecast-section w-full shrink-0 mt-auto">
+
+                <nav class="flex flex-row justify-between px-2 sm:px-4 md:px-7">
+
+                    <ul>
+
+                        <li class="text-[10px] font-bold uppercase text-white">
+                            TODAY
+                        </li>
+
+                    </ul>
+
+                    <a href="" class="text-[9px] font-bold uppercase text-white underline">
+                        SHOW FOR 16 DAYS
+                    </a>
+
+                </nav>
+
+                <hr class="text-white/35 my-5">
+
+                <table class="styled-scrollbar w-full block overflow-x-auto">
+
+                    <tbody class="block" id="weekly-forecast-body">
+
+                        <tr class="flex flex-row justify-between gap-6 sm:gap-8 lg:gap-0">
+
+                            <td class="flex flex-col shrink-0">
+
+                                <div class="flex flex-col gap-2">
+
+                                    <div class="time flex flex-col">
+
+                                        <span class="day text-[12px] font-bold uppercase text-white">
+                                            
+                                        </span>
+
+                                        <span class="date text-[11px] font-normal text-white/55">
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp flex flex-col">
+
+                                        <span class="min text-[10px] font-bold text-white/60">
+
+                                            min.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                        <span class="max text-[10px] font-bold text-white/60">
+
+                                            max.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                    <div class="wrap flex flex-col gap-2 max-w-2/3">
+
+                                        <i class="icon">
+
+                                            <img src="" alt="" class="w-[30px]">
+
+                                        </i>
+
+                                        <span class="state text-[12px] font-normal text-white/60 leading-snug text-wrap">
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td class="flex flex-col shrink-0">
+
+                                <div class="flex flex-col gap-2">
+
+                                    <div class="time flex flex-col">
+
+                                        <span class="day text-[12px] font-bold uppercase text-white">
+                                            
+                                        </span>
+
+                                        <span class="date text-[11px] font-normal text-white/55">
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp flex flex-col">
+
+                                        <span class="min text-[10px] font-bold text-white/60">
+
+                                            min.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                        <span class="max text-[10px] font-bold text-white/60">
+
+                                            max.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                    <div class="wrap flex flex-col gap-2 max-w-2/3">
+
+                                        <i class="icon">
+
+                                            <img src="" alt="" class="w-[30px]">
+
+                                        </i>
+
+                                        <span class="state text-[12px] font-normal text-white/60 leading-snug">
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td class="flex flex-col shrink-0">
+
+                                <div class="flex flex-col gap-2">
+
+                                    <div class="time flex flex-col">
+
+                                        <span class="day text-[12px] font-bold uppercase text-white">
+                                            
+                                        </span>
+
+                                        <span class="date text-[11px] font-normal text-white/55">
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp flex flex-col">
+
+                                        <span class="min text-[10px] font-bold text-white/60">
+
+                                            min.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                        <span class="max text-[10px] font-bold text-white/60">
+
+                                            max.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                    <div class="wrap flex flex-col gap-2 max-w-2/3">
+
+                                        <i class="icon">
+
+                                            <img src="" alt="" class="w-[30px]">
+
+                                        </i>
+
+                                        <span class="state text-[12px] font-normal text-white/60 leading-snug">
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td class="flex flex-col shrink-0">
+
+                                <div class="flex flex-col gap-2">
+
+                                    <div class="time flex flex-col">
+
+                                        <span class="day text-[12px] font-bold uppercase text-white">
+                                            
+                                        </span>
+
+                                        <span class="date text-[11px] font-normal text-white/55">
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp flex flex-col">
+
+                                        <span class="min text-[10px] font-bold text-white/60">
+
+                                            min.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                        <span class="max text-[10px] font-bold text-white/60">
+
+                                            max.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                    <div class="wrap flex flex-col gap-2 max-w-2/3">
+
+                                        <i class="icon">
+                                            <img src="" alt="" class="w-[30px]">
+                                        </i>
+
+                                        <span class="state text-[12px] font-normal text-white/60 leading-snug text-wrap">
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td class="flex flex-col shrink-0">
+
+                                <div class="flex flex-col gap-2">
+
+                                    <div class="time flex flex-col">
+
+                                        <span class="day text-[12px] font-bold uppercase text-white">
+                                            
+                                        </span>
+
+                                        <span class="date text-[11px] font-normal text-white/55">
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp flex flex-col">
+
+                                        <span class="min text-[10px] font-bold text-white/60">
+
+                                            min.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                        <span class="max text-[10px] font-bold text-white/60">
+
+                                            max.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                    <div class="wrap flex flex-col gap-2 max-w-2/3">
+
+                                        <i class="icon">
+
+                                            <img src="" alt="" class="w-[30px]">
+
+                                        </i>
+
+                                        <span class="state text-[12px] font-normal text-white/60 leading-snug">
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td class="flex flex-col shrink-0">
+
+                                <div class="flex flex-col gap-2">
+
+                                    <div class="time flex flex-col">
+
+                                        <span class="day text-[12px] font-bold uppercase text-white">
+                                            
+                                        </span>
+
+                                        <span class="date text-[11px] font-normal text-white/55">
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp flex flex-col">
+
+                                        <span class="min text-[10px] font-bold text-white/60">
+
+                                            min.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                        <span class="max text-[10px] font-bold text-white/60">
+
+                                            max.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                    <div class="wrap flex flex-col gap-2 max-w-2/3">
+
+                                        <i class="icon">
+
+                                            <img src="" alt="" class="w-[30px]">
+
+                                        </i>
+
+                                        <span class="state text-[12px] font-normal text-white/60 leading-snug">
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td class="flex flex-col shrink-0">
+
+                                <div class="flex flex-col gap-2">
+
+                                    <div class="time flex flex-col">
+
+                                        <span class="day text-[12px] font-bold uppercase text-white">
+                                            
+                                        </span>
+
+                                        <span class="date text-[11px] font-normal text-white/55">
+                                        </span>
+
+                                    </div>
+
+                                    <div class="temp flex flex-col">
+
+                                        <span class="min text-[10px] font-bold text-white/60">
+
+                                            min.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                        <span class="max text-[10px] font-bold text-white/60">
+
+                                            max.
+
+                                            <span class="text-white">
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                    <div class="wrap flex flex-col gap-2 max-w-2/3">
+
+                                        <i class="icon">
+                                            <img src="" alt="" class="w-[30px]">
+                                        </i>
+
+                                        <span class="state text-[12px] font-normal text-white/60 leading-snug">
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </div>
+
+    </main>
+
+<script type="module" src="main.js"></script>
+
+</body>
+
+</html>
